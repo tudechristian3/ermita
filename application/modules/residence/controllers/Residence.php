@@ -106,6 +106,39 @@ class Residence extends MY_Controller{
         }    
     }
 
+
+
+
+    public function edit(){
+        $ermita_rid = $this->input->post('ermita_rid');
+        $ermita_rfname = $this->input->post('ermita_rfname');
+        $ermita_rmname = $this->input->post('ermita_rmname');
+        $ermita_rlname = $this->input->post('ermita_rlname');
+        $ermita_rgender = $this->input->post('ermita_rgender');
+        $ermita_rbirthdate = $this->input->post('ermita_rbirthdate');
+        $ermita_rwork = $this->input->post('ermita_rwork');
+        $ermita_rsitio = $this->input->post('ermita_rsitio');
+
+        $set = array(
+            'ermita_rfname' => $ermita_rfname,
+            'ermita_rmname' => $ermita_rmname,
+            'ermita_rlname' => $ermita_rlname,
+            'ermita_rgender' => $ermita_rgender,
+            'ermita_rbirthdate' => $ermita_rbirthdate,
+            'ermita_rwork' => $ermita_rwork,
+            'ermita_rsitio' => $ermita_rsitio
+        );
+
+        $where = array(
+            'ermita_rid' => $ermita_rid
+        );
+
+        
+        $update = $this->MY_Model->update('ermita_residence', $set, $where);
+
+        //echo json_encode($update);
+    }
+
     
     public function delete(){
         $soft_delete = $this->input->post('soft_delete');

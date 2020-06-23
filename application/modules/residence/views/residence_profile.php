@@ -57,6 +57,7 @@
                                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Timeline</a> </li>
                                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
                                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#certificate" role="tab">Certificate</a> </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -163,69 +164,88 @@
                                 </div>
                                 <div class="tab-pane" id="settings" role="tabpanel">
                                     <div class="card-body">
-                                        <form class="form-horizontal form-material">
-                                            <?php foreach($residence as $u): ?>
+                                    <?php foreach($residence as $u): ?>
+                                        <form action="<?php echo base_url('residence/edit')?>" method="post" class="form-horizontal form-material">
+                                        <input type="hidden" class="form-control" name="ermita_rid" value="<?php echo $u['ermita_rid']; ?>">
+                                            
                                             <div class="form-group">
                                                 <label class="col-md-12">First Name</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" placeholder="Johnathan Doe" value="<?php echo $u['ermita_rfname']; ?>" class="form-control form-control-line">
+                                                    <input type="text" name="ermita_rfname" value="<?php echo $u['ermita_rfname']; ?>" class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-12">Middle Name</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" placeholder="Johnathan Doe" value="<?php echo $u['ermita_rmname']; ?>" class="form-control form-control-line">
+                                                    <input type="text" name="ermita_rmname" value="<?php echo $u['ermita_rmname']; ?>" class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-12">Last Name</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" placeholder="Johnathan Doe" value="<?php echo $u['ermita_rlname']; ?>" class="form-control form-control-line">
+                                                    <input type="text" name="ermita_rlname" value="<?php echo $u['ermita_rlname']; ?>" class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="example-email" class="col-md-12">Email</label>
+                                                <label for="example-email" class="col-md-12">Gender</label>
                                                 <div class="col-md-12">
-                                                    <input type="email" placeholder="johnathan@admin.com" value="<?php echo $u['ermita_rid']; ?>" class="form-control form-control-line" name="example-email" id="example-email">
+                                                    <input type="text" name="ermita_rgender" value="<?php echo $u['ermita_rgender']; ?>" class="form-control form-control-line" name="example-email" id="example-email">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-12">Password</label>
+                                                <label class="col-md-12">Birthdate</label>
                                                 <div class="col-md-12">
-                                                    <input type="password" value="password" value="<?php echo $u['ermita_rid']; ?>" class="form-control form-control-line">
+                                                    <input type="text" name="ermita_rbirthdate" value="<?php echo $u['ermita_rbirthdate']; ?>" class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-12">Phone No</label>
+                                                <label class="col-md-12">Work</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" placeholder="123 456 7890" value="<?php echo $u['ermita_rid']; ?>" class="form-control form-control-line">
+                                                    <input type="text" name="ermita_rwork" value="<?php echo $u['ermita_rwork']; ?>" class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-12">Message</label>
+                                                <label class="col-md-12">Sitio</label>
                                                 <div class="col-md-12">
-                                                    <textarea rows="5" class="form-control form-control-line"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-12">Select Country</label>
-                                                <div class="col-sm-12">
-                                                    <select class="form-control form-control-line">
-                                                        <option>London</option>
-                                                        <option>India</option>
-                                                        <option>Usa</option>
-                                                        <option>Canada</option>
-                                                        <option>Thailand</option>
-                                                    </select>
+                                                    <input type="text" name="ermita_rsitio" value="<?php echo $u['ermita_rsitio']; ?>" class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             <?php endforeach; ?>
                                             <div class="form-group">
                                                 <div class="col-sm-12">
-                                                    <button class="btn btn-success">Update Profile</button>
+                                                    <button type="submit" class="btn btn-success">Update Profile</button>
                                                 </div>
                                             </div>
                                         </form>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="certificate" role="tabpanel">
+                                    <div class="card-body">
+                                        <div class="col-md-7 align-self-center text-right d-none d-md-block">
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addCertificate"><i class="fa fa-plus-circle"></i> Create Certificate</button>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <table class="table display table-bordered table-striped no-wrap" id="certificate_table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>ID</th>
+                                                                    <th>Name</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                            </tbody>   
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -233,4 +253,30 @@
                     </div>
                     <!-- Column -->
                 </div>
-                                    </div> 
+            </div>
+
+            <div id="addCertificate" class="modal" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered animated bounceIn">
+                    <div class="modal-content">
+                        <form id="addFormCertificate" method="post" enctype="multipart/form-data" novalidate>
+                            <input type="hidden" class="form-control" name="user_id" value="">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="vcenter">Add New Certificate</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                            <div class="form-group">
+                                    <p class="m-0">First Name</p>
+                                    <select class="form-control">
+                                        <option value="For Employment">For Employment</option>
+                                    </select>
+                            </div>
+                            <div class="m-t-30 text-right">
+                                <button type="submit" class="btn btn-info waves-effect action-btn">Create</button>
+                            </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>

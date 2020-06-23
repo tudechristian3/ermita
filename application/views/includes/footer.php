@@ -46,6 +46,7 @@
     <script src="<?php echo base_url()?>assets/main/js/dashboard1.js"></script>
 
     <script src="<?php echo base_url()?>assets/js/residence.js"></script>
+    <script src="<?php echo base_url()?>assets/js/certificate.js"></script>
 
     <script src="<?php echo base_url()?>assets/css/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <!-- Style switcher -->

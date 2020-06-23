@@ -1,23 +1,18 @@
 $(document).ready(function(){
     var base_url = $('.base_url').val();
-    var table_user = $("#residence_table").DataTable({
+    var table_user = $("#certificate_table").DataTable({
         "processing": true,
         "serverSide": true,
         "order": [[0,'desc']],
         "columns":[
-             {"data":"ermita_rid"},
-             {"data": "ermita_rid","render":function(data, type, row, meta){
-                       var str = '';
-                       str += row.ermita_rlname +  ", " +row.ermita_rfname;
-                       return str;
-                  }
-             },
-             {"data": "ermita_rid","render":function(data, type, row, meta){
+             {"data":"ermita_certificate_id"},
+             {"data":"ermita_certificate_status"},
+             {"data":"ermita_certificate_id","render":function(data, type, row, meta){
                 var str = '';
                 
                 str += '<div class="btn-group">';
-                     str += '<a href="" class="btn btn-danger btn-sm delete_residence_action" data-id="'+row.ermita_rid+'"><i class="fa fa-trash"></i></a>';
-                     str += '<a href="" class="btn btn-primary btn-sm view_residence_action" data-id="'+row.ermita_rid+'"><i class="fa fa-eye"></i></a>';
+                     str += '<a href="" class="btn btn-danger btn-sm delete_residence_action" data-id="'+row.ermita_certificate_id+'"><i class="fa fa-trash"></i></a>';
+                     str += '<a href="" class="btn btn-primary btn-sm view_residence_action" data-id="'+row.ermita_certificate_id+'"><i class="fa fa-eye"></i></a>';
                      //str += '<a href="" data-toggle="modal" data-target="#EditProduct" class="btn btn-primary btn-sm product_details_action" img-url="'+row.date_added+'|'+row.uploaded_file+'" data-id="'+row.product_id+'" data-product_name="'+row.product_name+'" data-product_price="'+row.product_price+'" data-product_image="'+row.uploaded_file+'"><i class="fa fa-edit"></i></a>';
                 str += '</div>';
                 return str;
@@ -25,7 +20,7 @@ $(document).ready(function(){
       },
         ],
         "ajax": {
-             "url": "residence/get_residence",
+             "url": base_url+'paper/get_certificate',
              "type": "POST"
         },
         "columnDefs": [
